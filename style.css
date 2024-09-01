@@ -1,0 +1,316 @@
+:root {
+    /* Primary */
+    --color-blue: hsl(246, 80%, 60%);
+    
+    --color-light-orange: hsl(15, 100%, 70%);
+    --color-soft-blue: hsl(195, 74%, 62%);
+    --color-light-red: hsl(348, 100%, 68%);
+    --color-lime-green: hsl(145, 58%, 55%);
+    --color-violet: hsl(264, 64%, 52%);
+    --color-soft-yellow: hsl(43, 84%, 65%);
+    
+    /* neutral */
+    --color-very-dark-blue: hsl(226, 43%, 10%);
+    --color-dark-blue: hsl(235, 46%, 20%);
+    --color-desaturated-blue: hsl(235, 45%, 61%);
+    --color-pale-blue: hsl(236, 100%, 87%);
+    --color-white: hsl(0, 0%, 100%);
+
+    --spacing-05: 0.125rem;
+    --spacing-1: 0.25rem;
+    --spacing-2: 0.5rem;
+    --spacing-3: 0.75rem;
+    --spacing-4: 1rem;
+    --spacing-5: 1.25rem;
+    --spacing-6: 1.5rem;
+    --spacing-7: 1.75rem;
+    --spacing-8: 2rem;
+    --spacing-9: 2.25rem;
+    --spacing-10: 2.5rem;
+    --spacing-12: 3rem;
+    --spacing-16: 4rem;
+    --spacing-20: 5rem;
+
+    color: var(--color-white);
+    font-family: "Rubik", sans-serif;
+    font-optical-sizing: auto;
+    font-size: 18px;
+}
+
+body, h1, p {
+    margin: 0;
+}
+
+main {
+    min-height: 100vh;
+    
+    padding: var(--spacing-16) var(--spacing-5);
+    
+    background-color: var(--color-very-dark-blue);
+}
+
+article {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-5);
+}
+
+section {
+    border-radius: calc(var(--spacing-2) + 2px);
+    background-repeat: no-repeat;
+    background-position: calc(100% - 18px) -12px;
+}
+
+section.main {
+    display: flex;
+    flex-direction: column  ;
+    background-color: var(--color-dark-blue);
+}
+
+section.main .profile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--spacing-4);
+
+    background-color: var(--color-blue);
+    border-radius: var(--spacing-2);
+    padding: var(--spacing-6);
+}
+
+.profile .avatar {
+    background-image: url('images/image-jeremy.png');
+    background-size: cover;
+    width: 45px;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    border: 2px solid var(--color-white);
+}
+
+.profile span {
+    font-weight: 300;
+    font-size: 0.75rem;
+    color: var(--color-pale-blue);
+    margin-bottom: var(--spacing-1);
+}
+
+.profile h1 {
+    font-weight: 300;
+    color: var(--color-white);
+}
+
+.filter {
+    display: flex;
+    flex-direction: row;
+    padding: var(--spacing-4);
+
+    justify-content: space-around;
+
+    font-weight: 300;
+    color: var(--color-desaturated-blue)
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+input[type="radio"]:hover + label {
+    color: var(--color-white);
+    cursor: pointer;
+}
+
+input[type="radio"]:checked + label {
+    color: var(--color-white);
+}
+
+#card-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-5);
+}
+
+section .card {
+    margin-top: var(--spacing-8);
+    background-color: var(--color-dark-blue);
+    padding: var(--spacing-6);
+    border-radius: var(--spacing-2);
+    cursor: pointer;
+    position: relative;
+}
+
+section .card::before {
+    position: absolute;
+    background-color: var(--color-desaturated-blue);
+    content: "";
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    border-radius: var(--spacing-2);
+    z-index: 1;
+    transition: opacity 500ms ease;
+}
+
+section .card:hover::before {
+    opacity: 0.5;
+}
+
+
+section .header {
+    font-weight: 500;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: var(--spacing-2);
+    position: relative;
+    z-index: 2;
+}
+
+section .header span {
+    flex: 1;
+}
+
+section .header svg {
+    cursor: pointer;
+}
+
+section .container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+section .container h1 {
+    flex: 1;
+    font-weight: 300;
+    font-size: 1.5rem;
+}
+
+section .container span {
+    font-weight: 300;
+    font-size: 0.75rem;
+    color: var(--color-pale-blue);
+}
+
+section.work {
+    background-color: var(--color-light-orange);
+    background-image: url('images/icon-work.svg');
+}
+
+section.play {
+    background-color: var(--color-pale-blue);
+    background-image: url('images/icon-play.svg');
+}
+
+section.study {
+    background-color: var(--color-light-red);
+    background-image: url('images/icon-study.svg');
+}
+
+section.exercise {
+    background-color: var(--color-lime-green);
+    background-image: url('images/icon-exercise.svg');
+}
+
+section.social {
+    background-color: var(--color-violet);
+    background-image: url('images/icon-social.svg');
+}
+
+section.self-care {
+    background-color: var(--color-soft-yellow);
+    background-image: url('images/icon-self-care.svg');
+}
+
+@media (min-width: 768px) {
+    :root {
+        font-size: clamp(8px, 2vw, 24px)
+    }
+
+    main {
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    article {
+        max-width: 1110px;
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        grid-template-rows: repeat(1, 1fr);
+        grid-template-areas: 
+            "main container";
+        gap: clamp(4px, 2vw, var(--spacing-6));
+    }
+
+    section.main {
+
+    }
+
+    section.main .profile {
+        flex-direction: column;
+        align-items: start;
+        flex: 1;
+        gap: var(--spacing-6);
+    }
+
+    .profile .avatar {
+        width: 90px;
+        aspect-ratio: 1 / 1;
+    }
+
+
+    .profile h1 {
+        font-size: 2rem;
+    }
+
+
+
+    .filter {
+        flex-direction: column;
+        gap: var(--spacing-3);
+    }
+
+
+    #card-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        grid-template-areas: 
+            "work play study"
+            "exercise social self-care";
+        gap: clamp(4px, 2vw, var(--spacing-6));
+    }
+
+    #card-container section {
+        aspect-ratio: 1 / 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #card-container section .card {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    #card-container section .card .container{
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: var(--spacing-2);
+    }
+
+    
+    section .container h1 {
+        font-size: 2.5rem;
+        flex: 1;
+    }
+
+}
