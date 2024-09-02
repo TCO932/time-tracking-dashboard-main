@@ -200,7 +200,7 @@ section.work {
 }
 
 section.play {
-    background-color: var(--color-pale-blue);
+    background-color: var(--color-soft-blue);
     background-image: url('images/icon-play.svg');
 }
 
