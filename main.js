@@ -1,9 +1,13 @@
-const cardContainer = document.getElementById('card-container')
+const dashboard = document.getElementById('dashboard')
 const createSection = (item) => {
     filters = ['daily', 'weekly', 'monthly']
-    return (filter) => {
-        const section = document.createElement('section');
-        section.classList.add(item.title.toLowerCase().split(' ').join('-'))
+    const section = document.createElement('section');
+    section.classList.add(item.title.toLowerCase().split(' ').join('-'))
+    section.render = (filter) => {
+        if (typeof filter == 'undefined') {
+            filter = 'daily'
+        }
+        
         section.innerHTML = `
             <div class="card">
                 <div class="header">
@@ -22,8 +26,8 @@ const createSection = (item) => {
                 </div>
             </div>
         `
-        return section;
     }
+    return section;
 };
 
 
@@ -37,8 +41,7 @@ radioButtons.forEach(radio => {
 });
 
 function onFilterUpdate(filter) {
-    cardContainer.innerHTML = '';
-    dashboardData.forEach(item => cardContainer.appendChild(item(filter)))
+    dashboard.childNodes.forEach(child => child.render?.(filter))
 }
 
 const dashboardData = [] 
@@ -51,7 +54,7 @@ window.onload = () => {
   
         return request.json();
     }).then((data) => {
-        data.forEach(item => dashboardData.push(createSection(item)))
-        dashboardData.forEach(item => cardContainer.appendChild(item('daily')))
+        data.forEach(item => dashboard.appendChild(createSection(item)))
+        onFilterUpdate()
     });
 }

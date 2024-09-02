@@ -34,7 +34,8 @@
     color: var(--color-white);
     font-family: "Rubik", sans-serif;
     font-optical-sizing: auto;
-    font-size: 18px;
+    font-size: clamp(18px, 2vw, 24px);
+    /* font-size: 18px; */
 }
 
 body, h1, p {
@@ -85,6 +86,7 @@ section.main .profile {
     aspect-ratio: 1 / 1;
     border-radius: 50%;
     border: 2px solid var(--color-white);
+    flex-shrink: 0;
 }
 
 .profile span {
@@ -124,9 +126,6 @@ input[type="radio"]:checked + label {
 }
 
 #card-container {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-5);
 }
 
 section .card {
@@ -226,10 +225,6 @@ section.self-care {
 }
 
 @media (min-width: 768px) {
-    :root {
-        font-size: clamp(8px, 2vw, 24px)
-    }
-
     main {
         padding: 0;
         display: flex;
@@ -241,15 +236,40 @@ section.self-care {
     article {
         max-width: 1110px;
         display: grid;
-        grid-template-columns: 1fr 3fr;
-        grid-template-rows: repeat(1, 1fr);
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(2, 1fr);
         grid-template-areas: 
-            "main container";
-        gap: clamp(4px, 2vw, var(--spacing-6));
+            "main work play study"
+            "main exercise social self-care";
+        gap: clamp(4px,  2vw - 10px , var(--spacing-6));
     }
 
     section.main {
+        grid-area: main;
+    }
 
+    section.work {
+        grid-area: work;
+    }
+
+    section.play {
+        grid-area: play;
+    }
+
+    section.study {
+        grid-area: study;
+    }
+
+    section.exercise {
+        grid-area: exercise;
+    }
+
+    section.social {
+        grid-area: social;
+    }
+
+    section.self-care {
+        grid-area: self-care;
     }
 
     section.main .profile {
@@ -276,31 +296,19 @@ section.self-care {
         gap: var(--spacing-3);
     }
 
-
-    #card-container {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(2, 1fr);
-        grid-template-areas: 
-            "work play study"
-            "exercise social self-care";
-        gap: clamp(4px, 2vw, var(--spacing-6));
-    }
-
-    #card-container section {
-        aspect-ratio: 1 / 1;
+    section:not(.main) {
         display: flex;
         flex-direction: column;
     }
 
-    #card-container section .card {
+    section:not(.main) .card {
         flex: 1;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
     }
 
-    #card-container section .card .container{
+    section:not(.main) .card .container{
         display: flex;
         flex-direction: column;
         align-items: start;
@@ -308,7 +316,7 @@ section.self-care {
     }
 
     
-    section .container h1 {
+    section:not(.main) .container h1 {
         font-size: 2.5rem;
         flex: 1;
     }
