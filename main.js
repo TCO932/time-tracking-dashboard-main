@@ -5,7 +5,7 @@ const createSection = (item) => {
     section.classList.add(item.title.toLowerCase().split(' ').join('-'))
     section.render = (filter) => {
         if (typeof filter == 'undefined') {
-            filter = 'daily'
+            filter = 'weekly'
         }
         
         section.innerHTML = `
